@@ -5,7 +5,7 @@ import { ProductItem } from "../../../../type";
 
 interface Props {
   params: {
-    id: string;
+    id: number;
   };
 }
 

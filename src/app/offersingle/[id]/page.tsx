@@ -6,7 +6,7 @@ import { ProductItem } from "../../../../type";
 // Define the component using correct PageProps type
 interface PageProps {
   params: {
-    id: string; // Dynamic route parameters are strings
+    id: number; // Dynamic route parameters are strings
   };
 }
 
