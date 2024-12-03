@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+
 import Container from "./Container";
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
