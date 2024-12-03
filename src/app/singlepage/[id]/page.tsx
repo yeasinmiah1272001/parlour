@@ -1,6 +1,7 @@
 import Container from "@/components/Container";
 import SingleService from "@/components/SingleService";
 import { mainService } from "@/constant";
+import { ProductItem } from "../../../../type";
 
 interface Props {
   params: {
@@ -15,7 +16,7 @@ const SinglePage = ({ params }: Props) => {
 
   return (
     <Container className="">
-      <SingleService item={filterData} />
+      <SingleService item={filterData as ProductItem} />
     </Container>
   );
 };

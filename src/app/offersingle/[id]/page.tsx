@@ -3,22 +3,31 @@ import SingleService from "@/components/SingleService";
 import { mainService } from "@/constant";
 import { ProductItem } from "../../../../type";
 
-interface Prop {
+// Define the component using correct PageProps type
+interface PageProps {
   params: {
-    id: string | number;
+    id: string; // Dynamic route parameters are strings
   };
 }
 
-const OfferSinglePage = ({ params }: Prop) => {
+const OfferSinglePage = ({ params }: PageProps) => {
   const { id } = params;
 
-  // Find the service by ID
+  // Convert id to a number and find the service
   const filterData = mainService.find((item) => item.id === Number(id));
+
+  // Handle case where the service is not found
+  if (!filterData) {
+    return (
+      <Container className="">
+        <p>Service not found.</p>
+      </Container>
+    );
+  }
 
   return (
     <Container className="">
-      <SingleService item={filterData as ProductItem} />{" "}
-      {/* Type assertion to ProductItem */}
+      <SingleService item={filterData as ProductItem} />
     </Container>
   );
 };
