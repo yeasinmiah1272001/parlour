@@ -1,4 +1,3 @@
-import React from "react";
 import Container from "./Container";
 import { speciaService } from "@/constant";
 import Image from "next/image";
