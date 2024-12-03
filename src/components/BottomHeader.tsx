@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { FaShoppingCart, FaUserAlt, FaHome } from "react-icons/fa";
+import { FaShoppingCart, FaUserAlt } from "react-icons/fa";
 import Container from "./Container";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";

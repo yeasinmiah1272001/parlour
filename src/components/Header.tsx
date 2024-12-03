@@ -3,7 +3,6 @@ import logo from "../assets/logo.png";
 import Image from "next/image";
 import { navigation } from "@/constant";
 import Link from "next/link";
-import BottomHeader from "./BottomHeader";
 
 const Header = () => {
   return (
