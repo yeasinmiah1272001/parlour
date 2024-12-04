@@ -3,13 +3,13 @@ import SingleService from "@/components/SingleService";
 import { mainService } from "@/constant";
 import { ProductItem } from "../../../../type";
 
-interface PageProps {
-  params: {
-    id: number;
-  };
-}
+// interface PageProps {
+//   params: {
+//     id: number;
+//   };
+// }
 
-const OfferSinglePage = ({ params }: PageProps) => {
+const OfferSinglePage = ({ params }: any) => {
   const { id } = params;
 
   const filterData = mainService.find((item) => item.id === Number(id));

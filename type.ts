@@ -7,7 +7,7 @@ export type Review = {
 
 // Define the type for a service or product item
 export type ProductItem = {
-  id: number | string;
+  id: number;
   title: string;
   description: string;
   category: string;
