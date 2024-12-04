@@ -3,20 +3,16 @@ import SingleService from "@/components/SingleService";
 import { mainService } from "@/constant";
 import { ProductItem } from "../../../../type";
 
-// Define the component using correct PageProps type
 interface PageProps {
   params: {
-    id: number; // Dynamic route parameters are strings
+    id: number;
   };
 }
 
 const OfferSinglePage = ({ params }: PageProps) => {
   const { id } = params;
 
-  // Convert id to a number and find the service
   const filterData = mainService.find((item) => item.id === Number(id));
-
-  // Handle case where the service is not found
   if (!filterData) {
     return (
       <Container className="">
