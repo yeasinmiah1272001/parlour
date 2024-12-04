@@ -1,18 +1,19 @@
-// "use client";
 import Container from "@/components/Container";
 import SingleService from "@/components/SingleService";
 import { mainService } from "@/constant";
 import { ProductItem } from "../../../../type";
 
-type Params = {
-  id: string; // Assuming the 'id' in URL is a string
-};
+interface PageProps {
+  params: {
+    id: number;
+  };
+}
 
-const OfferSinglePage = ({ params }: { params: Params }) => {
+const OfferSinglePage = ({ params }: PageProps) => {
   const { id } = params;
 
   const filterData = mainService.find((item) => item.id === Number(id));
-  console.log("fil", filterData);
+
   if (!filterData) {
     return (
       <Container className="">
