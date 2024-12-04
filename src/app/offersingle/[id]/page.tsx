@@ -8,8 +8,8 @@ import { ProductItem } from "../../../../type";
 //     id: number;
 //   };
 // }
-
-const OfferSinglePage = ({ params }: any) => {
+// @ts-ignore
+const OfferSinglePage = ({ params }) => {
   const { id } = params;
 
   const filterData = mainService.find((item) => item.id === Number(id));
