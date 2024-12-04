@@ -2,15 +2,15 @@ import Container from "@/components/Container";
 import SingleService from "@/components/SingleService";
 import { mainService } from "@/constant";
 import { ProductItem } from "../../../../type";
-interface Params {
-  id: string;
-}
+
 interface PageProps {
-  params: Params;
+  params: {
+    id: string;
+  };
 }
+
 const OfferSinglePage = ({ params }: PageProps) => {
   const { id } = params;
-  console.log("id", typeof id, "params", params);
 
   const filterData = mainService.find((item) => item.id === Number(id));
 

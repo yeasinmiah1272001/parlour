@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import BottomHeader from "@/components/BottomHeader";
+import BottomHeader from "@/components/BottomHeadert";
 import Layout from "@/Layout/Layout";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "parler",
@@ -27,6 +28,7 @@ export default function RootLayout({
           </div>
           {children}
           <Footer />
+          <Toaster position="top-right" reverseOrder={false} />
         </Layout>
       </body>
     </html>

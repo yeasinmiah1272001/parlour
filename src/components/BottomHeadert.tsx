@@ -4,9 +4,17 @@ import { FaShoppingCart, FaUserAlt } from "react-icons/fa";
 import Container from "./Container";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import SidebarCart from "./SidebarCar";
+import { useSelector } from "react-redux";
+
+import { Button, Modal } from "flowbite-react";
+import { useState } from "react";
+import { StateType } from "../../type";
 
 const BottomHeader = () => {
   const { data: session } = useSession();
+  const { cart } = useSelector((state: StateType) => state.perler);
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div className="shadow-md shadow-btnColor border border-b-2 ">
       <Container className="w-full  text-black  flex justify-between items-center">
@@ -40,18 +48,30 @@ const BottomHeader = () => {
         </div>
 
         {/* Right Side - Cart and Authentication */}
-        <div className="flex space-x-6">
+        <div className="flex space-x-6 items-center">
           {/* Cart */}
-          <Link href="/" className="flex items-center relative">
-            <FaShoppingCart className="text-2xl" />
-          </Link>
+
+          {/* sidebar drower */}
+          <Button
+            className="text-btnColor border-none relative"
+            onClick={() => setOpenModal(true)}
+          >
+            <FaShoppingCart size={20} />
+            <span className="absolute bg-red-500 h-5 text-white rounded-full w-5 top-0 right-0 ">
+              {" "}
+              {cart.length ? cart.length : "0"}
+            </span>
+          </Button>
+          <SidebarCart setOpenModal={setOpenModal} openModal={openModal} />
+
+          {/* sidebar drower */}
 
           {/* Authentication - Login / Logout */}
           <Link href="/" className="flex items-center">
             {session?.user ? (
               <div className="">
                 <Image
-                  className="rounded-full"
+                  className="rounded-full h-10 w-20"
                   src={session.user.image!}
                   alt="image"
                   height={50}

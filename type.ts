@@ -12,6 +12,7 @@ export type ProductItem = {
   description: string;
   category: string;
   price: number;
+  quantity: number;
   image: string;
   discount: number;
   offers: string;
@@ -19,3 +20,9 @@ export type ProductItem = {
   relatedServices: (number | string)[];
   rating: number;
 };
+export interface StateType {
+  perler: {
+    cart: ProductItem[];
+    userInfo: any;
+  };
+}
