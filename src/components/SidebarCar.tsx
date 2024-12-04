@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { StateType } from "../../type";
 import Image from "next/image";
 import { AiOutlineClose } from "react-icons/ai"; // Close icon from react-icons
-import Link from "next/link";
+
 import { Button, Modal } from "flowbite-react";
 import { Dispatch, SetStateAction } from "react";
 
@@ -18,7 +18,7 @@ const SidebarCart = ({ openModal, setOpenModal }: SidebarCartProps) => {
 
   return (
     <Modal
-      className="p-4  lg:mt-40 shadow-md shadow-btnColor"
+      className="p-4  lg:mt-16 shadow-md shadow-btnColor"
       dismissible
       show={openModal}
       onClose={() => setOpenModal(false)}

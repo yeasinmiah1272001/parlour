@@ -1,7 +1,7 @@
 import Container from "@/components/Container";
-import SingleService from "@/components/SingleService";
-import { mainService } from "@/constant";
-import { ProductItem } from "../../../../type";
+import SingleOffer from "@/components/SingleOffer";
+import { speciaService } from "@/constant";
+import { OfferItem } from "../../../../type";
 
 interface PageProps {
   params: {
@@ -12,7 +12,7 @@ interface PageProps {
 const OfferSinglePage = ({ params }: PageProps) => {
   const { id } = params;
 
-  const filterData = mainService.find((item) => item.id === Number(id));
+  const filterData = speciaService.find((item) => item.id === Number(id));
 
   if (!filterData) {
     return (
@@ -24,7 +24,7 @@ const OfferSinglePage = ({ params }: PageProps) => {
 
   return (
     <Container className="">
-      <SingleService item={filterData as ProductItem} />
+      <SingleOffer item={filterData as OfferItem} />
     </Container>
   );
 };

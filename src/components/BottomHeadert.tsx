@@ -7,7 +7,7 @@ import Image from "next/image";
 import SidebarCart from "./SidebarCar";
 import { useSelector } from "react-redux";
 
-import { Button, Modal } from "flowbite-react";
+import { Button } from "flowbite-react";
 import { useState } from "react";
 import { StateType } from "../../type";
 
@@ -71,7 +71,7 @@ const BottomHeader = () => {
             {session?.user ? (
               <div className="">
                 <Image
-                  className="rounded-full h-10 w-20"
+                  className="rounded-full h-10 w-12"
                   src={session.user.image!}
                   alt="image"
                   height={50}

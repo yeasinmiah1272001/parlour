@@ -26,3 +26,18 @@ export interface StateType {
     userInfo: any;
   };
 }
+
+export type OfferItem = {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  price: number;
+  // quantity: number;
+  image: string | any;
+  discount: number;
+  offers: string;
+  reviews: Review[];
+  relatedServices: (number | string)[];
+  rating: number;
+};

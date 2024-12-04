@@ -4,12 +4,12 @@ import { ProductItem } from "../../type";
 
 interface InitialState {
   cart: ProductItem[];
-  userInfo: any;
+  // userInfo: any;
 }
 
 const initialState: InitialState = {
   cart: [],
-  userInfo: null,
+  // userInfo: null,
 };
 
 export const counterSlice = createSlice({

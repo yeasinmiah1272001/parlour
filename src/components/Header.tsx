@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className=" ">
+    <div className="cursor-pointer ">
       <Container className="">
         <div className="flex items-center justify-between px-4 ">
           <div>
@@ -23,7 +23,9 @@ const Header = () => {
           </div>
           <div className="hidden md:flex items-center gap-10 font-medium ">
             {navigation.map((item, index) => (
-              <p key={index}>{item.title}</p>
+              <Link href={item.path} key={index}>
+                {item.title}
+              </Link>
             ))}
           </div>
           <div className="md:hidden">
