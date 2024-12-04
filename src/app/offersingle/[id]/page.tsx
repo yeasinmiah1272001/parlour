@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import Container from "@/components/Container";
 import SingleService from "@/components/SingleService";
 import { mainService } from "@/constant";
