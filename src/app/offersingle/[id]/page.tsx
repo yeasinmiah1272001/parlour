@@ -1,4 +1,5 @@
-// "use client";
+"use client";
+
 import Container from "@/components/Container";
 import SingleService from "@/components/SingleService";
 import { mainService } from "@/constant";
@@ -6,15 +7,15 @@ import { ProductItem } from "../../../../type";
 
 interface PageProps {
   params: {
-    id: string;
+    id: string; // This ensures compatibility with dynamic routes where `id` is a string.
   };
 }
 
-const OfferSinglePage = ({ params }: PageProps) => {
+const OfferSinglePage: React.FC<PageProps> = ({ params }) => {
   const { id } = params;
-  console.log("id", typeof id, "params", params);
 
-  const filterData = mainService.find((item) => item.id === Number(id));
+  // Parse `id` as a number for comparison
+  const filterData = mainService.find((item) => item.id === parseInt(id, 10));
 
   if (!filterData) {
     return (
