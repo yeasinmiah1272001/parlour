@@ -3,16 +3,12 @@
 import Link from "next/link";
 import { redirect, useSearchParams } from "next/navigation";
 
-const SuccessPage: React.FC = () => {
-  const searchParams = useSearchParams(); // Corrected the typo from "serchParams"
-  console.log("searchParams", searchParams);
+const SuccessPage = () => {
+  const serchParams = useSearchParams();
+  console.log("serch", serchParams);
+  const sessionId = serchParams.get("session_id");
 
-  const sessionId: string | null = searchParams.get("session_id");
-
-  if (!sessionId) {
-    redirect("/"); // Redirect if session_id is missing
-    return null; // Return null to avoid rendering anything during redirect
-  }
+  !sessionId && redirect("/");
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
@@ -25,10 +21,7 @@ const SuccessPage: React.FC = () => {
         </p>
 
         <div className="space-x-4">
-          <button
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
-            onClick={() => console.log("View Cart button clicked")} // Example handler
-          >
+          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out">
             View Cart
           </button>
 
@@ -36,7 +29,7 @@ const SuccessPage: React.FC = () => {
             href="/"
             className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
           >
-            Continue Add Your Service
+            Continue Add Your service
           </Link>
         </div>
       </div>
