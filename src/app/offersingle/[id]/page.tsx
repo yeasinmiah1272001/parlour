@@ -1,16 +1,19 @@
+"use client";
+
+import React from "react";
 import Container from "@/components/Container";
 import SingleOffer from "@/components/SingleOffer";
 import { speciaService } from "@/constant";
 import { OfferItem } from "../../../../type";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+const OfferSinglePage = async ({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) => {
+  const { id } = await params; // Unwrap the promise
 
-const OfferSinglePage = ({ params }: PageProps) => {
-  const { id } = params;
+  console.log("params", params);
 
   const filterData = speciaService.find((item) => item.id === Number(id));
 
