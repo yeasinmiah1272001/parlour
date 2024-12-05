@@ -1,17 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { redirect, useSearchParams } from "next/navigation";
 
 const SuccessPage = () => {
-  const searchParams = useSearchParams(); // Corrected typo from "serchParams"
-  console.log("searchParams", searchParams);
-  const sessionId = searchParams.get("session_id");
-
-  if (!sessionId) {
-    redirect("/"); // Redirect if session_id is missing
-  }
-
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
       <div className="bg-white shadow-lg p-8 rounded-lg text-center">
