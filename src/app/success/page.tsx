@@ -2,24 +2,13 @@
 // import { reseetCart } from "@/redux/shopySlice";
 import Link from "next/link";
 import { redirect, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
-import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
 
 const SuccessPage = () => {
   const serchParams = useSearchParams();
   console.log("serch", serchParams);
   const sessionId = serchParams.get("session_id");
-  const dispatch = useDispatch();
 
   !sessionId && redirect("/");
-
-  useEffect(() => {
-    if (sessionId) {
-      //   dispatch(reseetCart());
-      toast.success("payment receive");
-    }
-  }, [sessionId, dispatch]);
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">

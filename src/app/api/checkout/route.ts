@@ -34,15 +34,29 @@ export const POST = async (request: NextRequest) => {
       success: true,
       id: session.id,
     });
-  } catch (error: any) {
-    console.error("Stripe Error: ", error.message);
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Failed to create checkout session",
-        error: error.message,
-      },
-      { status: 500 }
-    );
+  } catch (error: unknown) {
+    // Check if the error is of type Error
+    if (error instanceof Error) {
+      console.error("Stripe Error: ", error.message);
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Failed to create checkout session",
+          error: error.message,
+        },
+        { status: 500 }
+      );
+    } else {
+      // Handle unknown errors
+      console.error("Unknown Error: ", error);
+      return NextResponse.json(
+        {
+          success: false,
+          message: "An unknown error occurred",
+          error: "Unknown error",
+        },
+        { status: 500 }
+      );
+    }
   }
 };
