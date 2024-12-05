@@ -12,11 +12,11 @@ import special4 from "../assets/images/special/special.jpg";
 export const navigation = [
   { title: "Home", path: "/" },
   { title: "Services", path: "/allservicepage" },
-  { title: "About Us", path: "/about" },
-  { title: "Gallery", path: "/gallery" },
-  { title: "Our Experts", path: "/experts" },
+  { title: "About Us", path: "/aboutsection" },
+  { title: "Gallery", path: "/gallerypage" },
+  { title: "Our Experts", path: "/ourExpertspage" },
   { title: "Book Appointment", path: "/appointment" },
-  { title: "Contact Us", path: "/contact" },
+  { title: "Contact Us", path: "/contactuspage" },
 ];
 
 export const services = [
