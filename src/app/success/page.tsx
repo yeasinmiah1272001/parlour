@@ -4,11 +4,13 @@ import Link from "next/link";
 import { redirect, useSearchParams } from "next/navigation";
 
 const SuccessPage = () => {
-  const serchParams = useSearchParams();
-  console.log("serch", serchParams);
-  const sessionId = serchParams.get("session_id");
+  const searchParams = useSearchParams(); // Corrected typo from "serchParams"
+  console.log("searchParams", searchParams);
+  const sessionId = searchParams.get("session_id");
 
-  !sessionId && redirect("/");
+  if (!sessionId) {
+    redirect("/"); // Redirect if session_id is missing
+  }
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
@@ -29,7 +31,7 @@ const SuccessPage = () => {
             href="/"
             className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
           >
-            Continue Add Your service
+            Continue Add Your Service
           </Link>
         </div>
       </div>
