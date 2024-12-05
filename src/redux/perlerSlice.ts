@@ -4,12 +4,12 @@ import { ProductItem } from "../../type";
 
 interface InitialState {
   cart: ProductItem[];
-  userInfo: any;
+  // userInfo: any;
 }
 
 const initialState: InitialState = {
   cart: [],
-  userInfo: null,
+  // userInfo: null,
 };
 
 export const counterSlice = createSlice({
@@ -36,16 +36,15 @@ export const counterSlice = createSlice({
       state.cart = [];
     },
 
-    addUser: (state, action) => {
-      state.userInfo = action.payload;
-    },
-    removeUser: (state) => {
-      state.userInfo = null;
-    },
+    // addUser: (state, action) => {
+    //   state.userInfo = action.payload;
+    // },
+    // removeUser: (state) => {
+    //   state.userInfo = null;
+    // },
   },
 });
 
-export const { addUser, addTocart, removeUser, reseetCart, deleteCount } =
-  counterSlice.actions;
+export const { addTocart, reseetCart, deleteCount } = counterSlice.actions;
 
 export default counterSlice.reducer;
