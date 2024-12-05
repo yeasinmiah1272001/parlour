@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { ProductItem } from "../../../../type";
 
-export const POST = async (request: NextRequest) => {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {});
 
+export const POST = async (request: NextRequest) => {
   try {
     const { email, item } = await request.json();
 
@@ -12,11 +12,11 @@ export const POST = async (request: NextRequest) => {
       quantity: product.quantity,
       price_data: {
         currency: "usd",
-        unit_amount: Math.round(product.price * 100), // Convert dollars to cents
+        unit_amount: Math.round(product.price * 100), // Convert to cents
         product_data: {
           name: product.title,
-          description: product.description,
-          images: [product.image], // Stripe expects an array
+          description: product.description || "No description provided",
+          images: [product.image],
         },
       },
     }));
@@ -30,33 +30,17 @@ export const POST = async (request: NextRequest) => {
       customer_email: email,
     });
 
-    return NextResponse.json({
-      success: true,
-      id: session.id,
-    });
+    return NextResponse.json({ success: true, id: session.id });
   } catch (error: unknown) {
-    // Check if the error is of type Error
-    if (error instanceof Error) {
-      console.error("Stripe Error: ", error.message);
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Failed to create checkout session",
-          error: error.message,
-        },
-        { status: 500 }
-      );
-    } else {
-      // Handle unknown errors
-      console.error("Unknown Error: ", error);
-      return NextResponse.json(
-        {
-          success: false,
-          message: "An unknown error occurred",
-          error: "Unknown error",
-        },
-        { status: 500 }
-      );
-    }
+    console.error("Stripe Error:", error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Failed to create checkout session",
+        error: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 }
+    );
   }
 };

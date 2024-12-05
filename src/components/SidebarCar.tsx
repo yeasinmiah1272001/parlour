@@ -32,6 +32,11 @@ const SidebarCart = ({ openModal, setOpenModal }: SidebarCartProps) => {
   const handleCheckout = async () => {
     const stripe = await stripePromise;
 
+    if (!stripe) {
+      alert("Stripe is not initialized.");
+      return;
+    }
+
     try {
       const response = await fetch("/api/checkout", {
         method: "POST",
@@ -47,10 +52,10 @@ const SidebarCart = ({ openModal, setOpenModal }: SidebarCartProps) => {
       const data = await response.json();
 
       if (response.ok) {
-        await stripe?.redirectToCheckout({ sessionId: data.id });
+        await stripe.redirectToCheckout({ sessionId: data.id });
       } else {
         console.error("Error creating checkout session:", data.message);
-        alert("Error creating checkout session. Please try again.");
+        alert(data.message || "Failed to create checkout session.");
       }
     } catch (error) {
       console.error("Checkout Error:", error);
