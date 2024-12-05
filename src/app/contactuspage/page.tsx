@@ -7,7 +7,7 @@ const ContactUsPage = () => {
       <div className="text-center mb-12">
         <h1 className="text-5xl font-bold text-gray-800">Contact Us</h1>
         <p className="text-gray-600 text-lg mt-4">
-          We'd love to hear from you! Reach out to us anytime.
+          We&aposd love to hear from you! Reach out to us anytime.
         </p>
       </div>
 
