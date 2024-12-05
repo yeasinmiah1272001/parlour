@@ -74,7 +74,7 @@ export const reviews = [
   {
     name: "Sophia Martinez",
     rating: 4,
-    review: "Great service, but there's room for improvement.",
+    review: "Great service, but there's rooms for improvement.",
     img: img3,
   },
   {
