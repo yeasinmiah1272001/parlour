@@ -31,7 +31,7 @@ const SingleOffer = ({ item }: { item: OfferItem }) => {
           <p className="text-lg font-bold text-green-600">
             Price: {item.price} BDT
           </p>
-          <AddServiceBtn item={item} />
+          <AddServiceBtn item={item as ProductItem} />
           <p className="text-gray-600">{item.description}</p>
         </div>
       </div>

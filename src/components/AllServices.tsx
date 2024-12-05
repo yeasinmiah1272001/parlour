@@ -9,7 +9,7 @@ import Link from "next/link";
 import { ProductItem } from "../../type";
 
 const AllServices = () => {
-  const [filteredServices, setFilteredServices] = useState(allService);
+  const [filteredServices] = useState(allService);
   const [categoryFilter, setCategoryFilter] = useState<string>("");
   const [offerFilter, setOfferFilter] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(1);
