@@ -1,14 +1,18 @@
 "use client";
-// import { reseetCart } from "@/redux/shopySlice";
+
 import Link from "next/link";
 import { redirect, useSearchParams } from "next/navigation";
 
-const SuccessPage = () => {
-  const serchParams = useSearchParams();
-  console.log("serch", serchParams);
-  const sessionId = serchParams.get("session_id");
+const SuccessPage: React.FC = () => {
+  const searchParams = useSearchParams(); // Corrected the typo from "serchParams"
+  console.log("searchParams", searchParams);
 
-  !sessionId && redirect("/");
+  const sessionId: string | null = searchParams.get("session_id");
+
+  if (!sessionId) {
+    redirect("/"); // Redirect if session_id is missing
+    return null; // Return null to avoid rendering anything during redirect
+  }
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
@@ -21,7 +25,10 @@ const SuccessPage = () => {
         </p>
 
         <div className="space-x-4">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out">
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
+            onClick={() => console.log("View Cart button clicked")} // Example handler
+          >
             View Cart
           </button>
 
@@ -29,7 +36,7 @@ const SuccessPage = () => {
             href="/"
             className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded transition duration-300 ease-in-out"
           >
-            Continue Add Your service
+            Continue Add Your Service
           </Link>
         </div>
       </div>
