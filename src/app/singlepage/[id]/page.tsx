@@ -3,14 +3,8 @@ import SingleService from "@/components/SingleService";
 import { mainService } from "@/constant";
 import { ProductItem } from "../../../../type";
 
-interface Props {
-  params: {
-    id: number;
-  };
-}
-
-const SinglePage = ({ params }: Props) => {
-  const { id } = params;
+const SinglePage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
 
   const filterData = mainService.find((item) => item.id == Number(id));
 
